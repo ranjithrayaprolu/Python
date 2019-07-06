@@ -1,4 +1,3 @@
-# Print less value if the numbers are even & higher if the one of the numbers is odd
 def lesser(x,y):
     if(x %2 == 0 and y%2 == 0):
         if(x<y):
@@ -11,7 +10,5 @@ def lesser(x,y):
         else:
             return x
 
+
 lesser(10,100)
-
-#
-
