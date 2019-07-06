@@ -70,12 +70,139 @@ def almost_there(x):
     return ((abs(100-x)<=10 or (abs(200-x)<=10)))
 almost_there(130)
 
+#Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
+
+#has_33([1, 3, 3]) → True
+#has_33([1, 3, 1, 3]) → False
+#has_33([3, 1, 3]) → False
+
+def has_33(nums):
+    for i in range(0,len(nums)-1):
+        if nums[i] == nums[i+1]:
+            return True
+        else:
+            return False
 
 
+has_33([1,3,1])
+
+#PAPER DOLL: Given a string, return a string where for every character in the original there are three characters
+#paper_doll('Hello') --> 'HHHeeellllllooo'
+#paper_doll('Mississippi') --> 'MMMiiissssssiiippppppiii'
+
+def paper_doll(text):
+    result =''
+    for char in text:
+        result += char*3
+    return result
+
+paper_doll('xyz')
+
+#BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum. If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
+
+def blackjack(a,b,c):
+    
+    if sum((a,b,c)) <= 21:
+        return sum((a,b,c))
+    elif sum((a,b,c)) <=31 and 11 in (a,b,c):
+        return sum((a,b,c)) - 10
+    else:
+        return 'BUST'
+blackjack(5,6,7)
+
+#Return the sum of the numbers in the array, except ignore sections of numbers starting with a 6 and extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.
+
+def summer_69(nums):
+    total = 0
+    add = True
+    for num in nums:
+        while add:
+            if(num != 6):
+                total += num
+                break
+            else:
+                add = False
+        while not add:
+            if(num != 9):
+                break
+            else:
+                add = True
+                break
+    return total
 
 
+#SPY GAME: Write a function that takes in a list of integers and returns True if it contains 007 in order
+#spy_game([1,2,4,0,0,7,5]) --> True
+#spy_game([1,0,2,4,0,5,7]) --> True
+#spy_game([1,7,2,0,4,5,0]) --> False
 
+def spy_game(nums):
+    
+    code = [0,0,7,'x']
+    
+    for num in nums:
+        if num == code[0]:
+            code.pop(0)   # code.remove(num) also works
 
+return len(code) == 1
+
+spy_game([1,2,4,1,0,7,5])
+
+#Write a function that returns the number of prime numbers that exist up to and including a given number¶
+
+def count_primes(num):
+    primes = [2]
+    x = 3
+    if num < 2:  # for the case of num = 0 or 1
+        return 0
+    while x <= num:
+        for y in range(3,x,2):  # test all odd factors up to x-1
+            if x%y == 0:
+                x += 2
+                break
+        else:
+            primes.append(x)
+            x += 2
+    print(primes)
+    return len(primes)
+count_primes(100)
+
+#Functions and Methods Homework
+def vol(rad):
+    return 4/3*3.14*rad**3
+
+vol(2)
+
+#Write a function that checks whether a number is in a given range (inclusive of high and low)
+def ran_check(number, low, high):
+    if number in range (low, high):
+        print('{} is in the range of {} {}' .format(number, low, high))
+    else:
+        print('number is out of range')
+ran_check(3,7,10)
+
+#Write a Python function that accepts a string and calculates the number of upper case letters and lower case letters.
+
+#Sample String : 'Hello Mr. Rogers, how are you this fine Tuesday?'
+#Expected Output :
+#No. of Upper case characters : 4
+#No. of Lower case Characters : 33
+
+def up_low(s):
+    d={"upper": 0 , "lower": 0}
+    for c in s:
+        if c.isupper():
+            d["upper"]+=1
+        elif c.islower():
+            d["lower"]+=1
+        else:
+            pass
+
+print("Original String : ", s)
+print("No. of Upper case characters : ", d["upper"])
+print("No. of Lower case Characters : ", d["lower"])
+
+up_low('To Test The Upper And Lower')
 
 
 
