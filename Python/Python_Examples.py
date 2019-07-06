@@ -217,7 +217,44 @@ def uniq_list(lst):
 
 uniq_list([1,1,1,1,2,2,3,3,3,3,4,5])
 
+#Write a Python function to multiply all the numbers in a list.
 
+#Sample List : [1, 2, 3, -4]
+#Expected Output : -24
+def multiply(nums):
+    total = 1
+    for a in nums:
+        total *= a;
+    return total
+
+multiply([1,2,3,-4])
+
+#Write a Python function that checks whether a passed string is palindrome or not.
+#Note: A palindrome is word, phrase, or sequence that reads the same backward as forward, e.g., madam or nurses run.
+
+#for a single word
+def pal(x):
+    return x == x[::-1]
+pal('nun')
+
+#for multiple words
+def pal(x):
+    x = x.replace(' ','')
+    return x == x[::-1]
+pal('nurses run')
+
+#Write a Python function to check whether a string is pangram or not.
+
+#Note : Pangrams are words or sentences containing every letter of the alphabet at least once.
+#For example : "The quick brown fox jumps over the lazy dog"
+
+import string
+
+def ispangram(str1, alphabet=string.ascii_lowercase):
+    alphaset = set(alphabet)
+    return alphaset <= set(str1.lower())
+
+ispangram("The quick brown fox jumps over the lazy dog")
 
 
 
